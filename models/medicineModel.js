@@ -1,4 +1,4 @@
-const medicine = [];
+const medicines = [];
 
 // Função para obter todos os medicamentos
 const getMedicines = () => {
@@ -7,16 +7,16 @@ const getMedicines = () => {
 
 // Função para obter um medicamento por ID
 const getMedicineById = (id) => {
-    return medicamentos.find(m => m.id === id);
+    return medicines.find(m => m.id === id);
 };
 
 // Função para adicionar um novo medicamento
-const addMedicine = (medicamento) => {
-    medicamentos.push(medicamento);
+const addMedicine = (medicine) => {
+    medicines.push(medicine);
 };
 
 module.exports = {
-    getMedicamentos,
-    getMedicamentoById,
-    addMedicamento
+    getMedicines,
+    getMedicineById,
+    addMedicine
 };
