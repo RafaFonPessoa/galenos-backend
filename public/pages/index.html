@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.js" integrity="sha384-BBDmZzVt6vjz5YbQqZPtFZW82o8QotoM7RUp5xOxV3nSJ8u2pSdtzFAbGKzTlKtg" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+    <button hx-post="/clicked"
+            hx-trigger="click"
+            hx-target="#parent-div"
+            hx-swap="outerHTML">
+        Click Me!
+    </button>
+    <div id="parent-div" hx-get="/alertList.html" hx-swap="innerHTML"></div>
+</body>
+</html>
