@@ -7,16 +7,38 @@
     <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.js" integrity="sha384-BBDmZzVt6vjz5YbQqZPtFZW82o8QotoM7RUp5xOxV3nSJ8u2pSdtzFAbGKzTlKtg" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+<body>
     <div id="list-container">
         <div>
-            <input type="search" name="search-bar" id="seach-bar" placeholder="Pesquise o nome dos remédios aqui">
-            <button>Adicionar a lista</button>
+            <input 
+                type="search" 
+                name="search-bar" 
+                id="search-bar" 
+                placeholder="Pesquise o nome dos remédios aqui"
+                hx-get="/api/medications/search" 
+                hx-trigger="keyup changed delay:500ms"
+                hx-target="#search-results"
+                hx-vals='{"name": this.value}'
+            >
+            <button hx-post="/api/medications/add" hx-include="#search-bar" hx-target="#list">
+                Adicionar a lista
+            </button>
         </div>    
-        <div id="list-background">
-            <h2 id="title"></h2>
-            <div id="list">
-                <h2>Lista</h2>
+
+        <!-- Resultados da pesquisa aparecem aqui -->
+        <div id="search-results">
+            <!-- HTMX irá carregar os medicamentos sugeridos aqui -->
+        </div>
+
+        <!-- Lista de medicamentos -->
+        <div id="list-window">
+            <h2 id="title">Lista de Medicamentos</h2>
+            <div id="list-bg">
+                <ul id="list">
+                    <!-- Medicamentos adicionados aparecerão aqui -->
+                </ul>
             </div>
+            <button>Checar interação</button>
         </div>
     </div>
 </body>
